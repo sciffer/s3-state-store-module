@@ -16,7 +16,7 @@ Would love any input or contribution to that setup and hope someone else will be
 Importnt: It is recommended that you setup a dedicated repo just for the state storage, you can follow the bellow guidelines to setup the state store:
 1. Setup a new repo for holding the state storage terraform setup only and initialize the local files using 'terraform init'.
 2. Prepare a basic providers file with local storage first(used to setup the state resources). Here is an example(replace the relevant fields with your specifics):
-'''
+```
 terraform {
   required_providers {
     aws = {
@@ -27,26 +27,26 @@ terraform {
 provider "aws" {
   region = "us-east-1"
 }
-'''
+```
 3. Prepare your storage definition, like the bellow example. Please add/replace relevant fields with the settings that suite your needs, settings description can be found at the inputs table bellow:
-'''
+```
 module "s3_state_store" {
   source = "sciffer/s3-state-store-module/aws"
   bucket_name = "terraform_state"
   dynamodb_table_name = "terraform_state_locks"
 }
-'''
+```
 4. Create the bucket and dynamoDB table, make sure the resources match your selections in the plan output:
-'''
+```
 $ terraform plan
 $ terraform apply
-'''
+```
 
 ### Migrating the local state to the newly created S3 state storage
 
 Follow the bellow steps to migrate the state from local to the new S3 state storage:
 1. Update the providers file with the following backend block, please adjust the bucket name, state key(should reflect a unique path to this terraform state file), region and dynamodb table name. The end result should follow the bellow format:
-'''
+```
 terraform {
   required_providers {
     aws = {
@@ -65,7 +65,7 @@ terraform {
 provider "aws" {
     region = "us-east-1"
 }
-'''
+```
 2. Reinitialize the state to migrate it to S3 by issuing: 'terraform init -migrate-state' and approving the migration if everything seems correct.
 3. Rerun plan and apply to verify the state is properly functioning.
 
