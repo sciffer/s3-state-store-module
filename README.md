@@ -1,3 +1,4 @@
+<!-- BEGIN_TF_DOCS -->
 # S3 Terrform State Storage Terraform Module
 
 A basic S3 Terraform state sotrage module based on best practices and meant mostly to save time and husstle of figuring out how to set it up.
@@ -28,7 +29,7 @@ provider "aws" {
   region = "us-east-1"
 }
 '''
-3. Prepare your storage definition, like the bellow example (add/replace relevant fields with the settings that suite your needs, settings descryption can be found at the bottom of this document):
+3. Prepare your storage definition, like the bellow example. Please add/replace relevant fields with the settings that suite your needs, settings description can be found at the inputs table bellow:
 '''
 module "s3_state_store" {
   source = "sciffer/s3-state-store-module/aws"
@@ -75,13 +76,13 @@ To add an exisitng or new terraform projects to the defined storage above you'll
 * Add the same backend block to the terraform resource in the providers file, but make sure to change the 'key' value and make sure it is unique for each terraform project.
 * The same procedure that is defined above can be used to migrate any existing terraform projects to the S3 bucket.
 
-#### Providers
+## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider_aws) | 4.52.0 |
+| <a name="provider_aws"></a> [aws](#provider_aws) | n/a |
 
-#### Inputs
+## Inputs
 
 | Name | Description | Type |
 |------|-------------|------|
@@ -92,7 +93,7 @@ To add an exisitng or new terraform projects to the defined storage above you'll
 | <a name="input_sse_algorithm"></a> [sse_algorithm](#input_sse_algorithm) | Optional: Encryption algorithm used to protect the state(Defaults to AES256) | `string` |
 | <a name="input_versioning"></a> [versioning](#input_versioning) | Optional: Enable S3 versioning(Defaults to true) | `bool` |
 
-#### Outputs
+## Outputs
 
 | Name | Description |
 |------|-------------|
@@ -108,4 +109,5 @@ Shalom Cohen (https://github.com/sciffer)
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE.md file for details.
+This project is licensed under the MIT License - see the LICENSE.md file for details
+<!-- END_TF_DOCS -->
