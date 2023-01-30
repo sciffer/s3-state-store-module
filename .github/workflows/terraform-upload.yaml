@@ -1,0 +1,30 @@
+name: Terraform Module Upload
+
+on:
+  push:
+    tags:
+    - v*.*.*
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Terraform
+      uses: hashicorp/setup-terraform@v2
+
+    - name: Init and validate
+      run: |
+        terraform fmt -check
+        terraform init
+        terraform validate -no-color
+
+    - name: Publish to Terraform Registry
+      run: |
+        terraform init -upgrade=true
+        terraform registry publish sciffer/s3-state-store $(echo  ${{ github.ref }} | cut -d'/' -f3)
+      env:
+        TF_REGISTRY_TOKEN: ${{ secrets.TF_REGISTRY_TOKEN }}

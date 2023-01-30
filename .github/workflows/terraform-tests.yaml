@@ -1,0 +1,24 @@
+name: Terraform Tests
+
+on:
+  pull_request:
+  push:
+    branches:
+    - main
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Terraform
+      uses: hashicorp/setup-terraform@v1
+
+    - name: Init and validate
+      run: |
+        terraform fmt -check
+        terraform init
+        terraform validate -no-color

@@ -73,40 +73,5 @@ provider "aws" {
 ### Adding additional terraform setups to use the S3 storage
 
 To add an exisitng or new terraform projects to the defined storage above you'll need the following:
-* Add the same backend block to the terraform resource in the providers file, but make sure to change the 'key' value and make sure it is unique for each terraform project.
+* Add the same backend block to the terraform resource in the providers file, but make sure to change the 'key' value and make sure it is unique for each terraform project. 
 * The same procedure that is defined above can be used to migrate any existing terraform projects to the S3 bucket.
-
-#### Providers
-
-| Name | Version |
-|------|---------|
-| <a name="provider_aws"></a> [aws](#provider_aws) | 4.52.0 |
-
-#### Inputs
-
-| Name | Description | Type |
-|------|-------------|------|
-| <a name="input_bucket_name"></a> [bucket_name](#input_bucket_name) | Mandatory: Name of the S3 state bucket | `string` |
-| <a name="input_dynamodb_table_name"></a> [dynamodb_table_name](#input_dynamodb_table_name) | Mandatory: Dynamo lock table name | `string` |
-| <a name="input_block_public_access"></a> [block_public_access](#input_block_public_access) | Optional: Implicitly block public access(Defaults to true) | `bool` |
-| <a name="input_dynamodb_billing_mode"></a> [dynamodb_billing_mode](#input_dynamodb_billing_mode) | Optional: Dynamo table billing mode(Defaults to PAY_PER_REQUEST) | `string` |
-| <a name="input_sse_algorithm"></a> [sse_algorithm](#input_sse_algorithm) | Optional: Encryption algorithm used to protect the state(Defaults to AES256) | `string` |
-| <a name="input_versioning"></a> [versioning](#input_versioning) | Optional: Enable S3 versioning(Defaults to true) | `bool` |
-
-#### Outputs
-
-| Name | Description |
-|------|-------------|
-| <a name="output_bucket_name"></a> [bucket_name](#output_bucket_name) | The bucket name used for state storage. |
-| <a name="output_bucket_region"></a> [bucket_region](#output_bucket_region) | The bucket region used for state storage. |
-| <a name="output_dynamodb_table_name"></a> [dynamodb_table_name](#output_dynamodb_table_name) | The dynamodb table name used for state lock. |
-
-## Authors
-
-Contributors names and contact info
-
-Shalom Cohen (https://github.com/sciffer)
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE.md file for details
