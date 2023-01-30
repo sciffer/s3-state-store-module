@@ -97,7 +97,7 @@ Shalom Cohen (https://github.com/sciffer)
 
 ## Version History
 
-* 0.1
+* 0.0.1
     * Initial Release
 
 ## License
