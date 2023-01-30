@@ -2,9 +2,6 @@ name: Terraform Tests
 
 on:
   pull_request:
-  push:
-    branches:
-    - main
 
 jobs:
   terraform:

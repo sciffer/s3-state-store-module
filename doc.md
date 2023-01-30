@@ -28,11 +28,10 @@ provider "aws" {
   region = "us-east-1"
 }
 '''
-3. Prepare your storage definition, like the bellow example (add/replace relevant fields with the settings that suite your needs, settings descryption can be found at the bottom of this document):
+3. Prepare your storage definition, like the bellow example. Please add/replace relevant fields with the settings that suite your needs, settings description can be found at the inputs table bellow:
 '''
 module "s3_state_store" {
-  source = "./s3-state-store-module"
-
+  source = "sciffer/s3-state-store-module/aws"
   bucket_name = "terraform_state"
   dynamodb_table_name = "terraform_state_locks"
 }
